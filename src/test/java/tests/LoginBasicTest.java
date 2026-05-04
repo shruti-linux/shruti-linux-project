@@ -4,8 +4,12 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.chrome.chromeOptions;
+import org.openqa.selenium.edge.EdgeOptions
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -19,7 +23,7 @@ import org.testng.annotations.*;
  */
 public class LoginBasicTest {
 	//IMPORTANT: Please download a Chrome driver and set this variable to the full path to the file
-	private final static String CHROME_DRIVER_FULL_PATH = "/Users/leonardolanni/Downloads/chromedriver_113_m1";
+	//private final static String CHROME_DRIVER_FULL_PATH = "/Users/leonardolanni/Downloads/chromedriver_113_m1";
 	//private final static String GECKO_DRIVER_FULL_PATH = "/Users/leonardolanni/Downloads/geckodriver";
 	private WebDriver driver;
 
@@ -29,8 +33,11 @@ public class LoginBasicTest {
 		driver = new ChromeDriver();
 		//System.setProperty("webdriver.gecko.driver", GECKO_DRIVER_FULL_PATH);
 		//driver = new FirefoxDriver();
-	}
-
+		try {
+		  driver = new RemoteWebDriver(new URL("http://localhost:4444"), new ChromeOptions(();
+	    }  catch (Exception e) {
+          e.printStackTrace();
+		}			
 	@AfterTest
 	public void tearDown() {
 		driver.quit();
