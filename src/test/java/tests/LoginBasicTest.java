@@ -24,7 +24,7 @@ public class LoginBasicTest {
         try {
             driver = new RemoteWebDriver(
                 new URL("http://localhost:4444"),
-                new EdgeOptions()
+                new Chromeptions()
             );
         } catch (Exception e) {
             e.printStackTrace();
