@@ -3,9 +3,7 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -14,17 +12,16 @@ import java.net.URL;
 
 public class LoginBasicTest {
 
-    private final static String CHROME_DRIVER_FULL_PATH = "/path/to/chromedriver";
     private WebDriver driver;
 
     @BeforeTest
     public void setUp() {
-        
-
         try {
+            ChromeOptions options = new ChromeOptions();
+
             driver = new RemoteWebDriver(
-                new URL("http://localhost:4444"),
-                new Chromeptions()
+                new URL("http://localhost:4444/wd/hub"),
+                options
             );
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,7 +30,9 @@ public class LoginBasicTest {
 
     @AfterTest
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test
