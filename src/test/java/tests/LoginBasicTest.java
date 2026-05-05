@@ -19,8 +19,7 @@ public class LoginBasicTest {
 
     @BeforeTest
     public void setUp() {
-        /System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_FULL_PATH);
-        /driver = new ChromeDriver();
+        
 
         try {
             driver = new RemoteWebDriver(
